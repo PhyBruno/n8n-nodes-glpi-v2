@@ -33,12 +33,12 @@ Create a **GLPI API** credential in n8n with:
 ### 2. Asset Management
 
 - **Item Types**: `Cable`, `Camera`, `Cartridge`, `Computer`, `Consumable`, `Enclosure`, `Monitor`, `Network Equipment`, `Passive Device`, `PDU`, `Peripheral`, `Phone`, `Printer`, `Rack`, `SIM Card`, `Software`, `Unmanaged Device`.
-- **Operations**: `Get`, `Update`, `Delete` (Purge/Trash).
+- **Operations**: `Get`, `Delete` (Purge/Trash).
 
 ### 3. Management
 
 - **Item Types**: `Appliance`, `Budget`, `Certificate`, `Contact`, `Contract`, `Datacenter`, `DC Room`, `Document`, `Domain`, `Line`, `Location`, `Software License`, `Supplier`.
-- **Operations**: `Get`, `Create`, `Update`, `Delete`.
+- **Operations**: `Get`, `Delete`.
 
 ### 4. Administration Management
 
@@ -71,6 +71,10 @@ The following features or operations are currently **not implemented** or **disa
 
 - **Administration Management**:
   - **Profile**: `Create` operation is not fully supported or implementation is pending.
+- **Asset Management**:
+  - `Update` and `Create` operations are not implemented.
+- **Management**:
+  - `Update` and `Create` operations are not implemented.
 - **General**:
   - Some specific fields for `Update` operations across various resources might not be exposed in the UI yet (use "Custom API Call" or "Raw Inputs" if available/needed).
 
