@@ -5,6 +5,7 @@ import type {
 	INodeTypeDescription,
 	IHttpRequestMethods,
 	IHttpRequestOptions,
+	IDataObject,
 } from 'n8n-workflow';
 import { NodeConnectionTypes, NodeOperationError, ApplicationError } from 'n8n-workflow';
 import { assistanceManagementDescription } from './resources/Assistance Management';
@@ -196,20 +197,70 @@ export class GlpiApi implements INodeType {
 						json: true,
 					};
 				} else if (normalizedOperation === 'create') {
+					const input: IDataObject = {};
+					if (resource === 'Assistance Management') {
+						input.name = this.getNodeParameter('title', itemIndex) as string;
+						input.content = this.getNodeParameter('description', itemIndex) as string;
+						input.status = this.getNodeParameter('status', itemIndex) as number;
+						
+						const date = this.getNodeParameter('opening_date', itemIndex, '') as string;
+						if (date) input.date = date;
+
+						const categoryId = this.getNodeParameter('itilcategories_id', itemIndex, 0) as number;
+						if (categoryId) input.itilcategories_id = categoryId;
+
+						const requester = this.getNodeParameter('users_id_requester', itemIndex, '') as string;
+						if (requester) input._users_id_requester = requester;
+
+						const observer = this.getNodeParameter('users_id_observer', itemIndex, '') as string;
+						if (observer) input._users_id_observer = observer;
+
+						const assign = this.getNodeParameter('users_id_assign', itemIndex, 0) as number;
+						if (assign) input._users_id_assign = assign;
+					}
+
 					options = {
 						method: 'POST',
 						url: `${baseUrl}/${itemtype}`,
 						headers,
-						body: { input: {} },
+						body: { input },
 						json: true,
 					};
 				} else if (normalizedOperation === 'update') {
 					const id = this.getNodeParameter('itemId', itemIndex);
+					const input: IDataObject = {};
+					
+					if (resource === 'Assistance Management') {
+						const title = this.getNodeParameter('title', itemIndex, '') as string;
+						if (title) input.name = title;
+
+						const description = this.getNodeParameter('description', itemIndex, '') as string;
+						if (description) input.content = description;
+
+						const status = this.getNodeParameter('status', itemIndex, 0) as number;
+						if (status) input.status = status;
+
+						const date = this.getNodeParameter('opening_date', itemIndex, '') as string;
+						if (date) input.date = date;
+
+						const categoryId = this.getNodeParameter('itilcategories_id', itemIndex, 0) as number;
+						if (categoryId) input.itilcategories_id = categoryId;
+
+						const requester = this.getNodeParameter('users_id_requester', itemIndex, '') as string;
+						if (requester) input._users_id_requester = requester;
+
+						const observer = this.getNodeParameter('users_id_observer', itemIndex, '') as string;
+						if (observer) input._users_id_observer = observer;
+
+						const assign = this.getNodeParameter('users_id_assign', itemIndex, 0) as number;
+						if (assign) input._users_id_assign = assign;
+					}
+
 					options = {
 						method: 'PUT',
 						url: `${baseUrl}/${itemtype}/${id}`,
 						headers,
-						body: { input: {} },
+						body: { input },
 						json: true,
 					};
 				} else if (operation === 'comment') {
