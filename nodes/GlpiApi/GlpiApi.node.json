@@ -1,0 +1,20 @@
+{
+	"node": "n8n-nodes-glpi",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Productivity", "IT Management"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/glpi-project/glpi/blob/master/apirest.md"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/glpi-project/glpi/blob/master/apirest.md"
+			}
+		]
+	}
+}
+
+

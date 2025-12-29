@@ -1,0 +1,53 @@
+{
+	"name": "@justbrunasso/n8n-nodes-glpi",
+	"version": "1.0.70",
+	"description": "GLPI Rest API Node compatible with GLPI 9.x and above.",
+	"license": "MIT",
+	"homepage": "https://github.com/PhyBruno/n8n-nodes-glpi",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"glpi",
+		"it-management",
+		"ticket-system"
+	],
+	"author": {
+		"name": "justbrunasso",
+		"email": "brusans2@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/PhyBruno/n8n-nodes-glpi.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/GlpiApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/GlpiApi/GlpiApi.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^19.0.4",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
