@@ -4,6 +4,7 @@ import { assistanceManagementCreateDescription } from './create';
 import { assistanceManagementUpdateDescription } from './update';
 import { assistanceManagementCommentDescription } from './comment';
 import { assistanceManagementSolveDescription } from './solve';
+import { assistanceManagementDeleteDescription } from './delete';
 import { assistanceManagementOptionsDescription } from './options';
 
 const showOnlyForAssistanceManagement = {
@@ -31,6 +32,12 @@ export const assistanceManagementDescription: INodeProperties[] = [
 				value: 'create',
 				action: 'Create a new assistance management item',
 				description: 'Create a new Assistance Management item',
+			},
+			{
+				name: 'Delete an Assistance Management Item',
+				value: 'delete',
+				action: 'Delete an assistance management item',
+				description: 'Delete an existing ITIL object',
 			},
 			{
 				name: 'Get an Assistance Management Item',
@@ -74,6 +81,7 @@ export const assistanceManagementDescription: INodeProperties[] = [
 	...assistanceManagementGetDescription,
 	...assistanceManagementCreateDescription,
 	...assistanceManagementUpdateDescription,
+	...assistanceManagementDeleteDescription,
 	...assistanceManagementCommentDescription,
 	...assistanceManagementSolveDescription,
 	...assistanceManagementOptionsDescription,

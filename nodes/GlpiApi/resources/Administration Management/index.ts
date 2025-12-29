@@ -4,6 +4,7 @@ import { administrationManagementCreateDescription } from './create';
 import { administrationManagementUpdateDescription } from './update';
 import { administrationManagementGroupDescription } from './group';
 import { administrationManagementProfileDescription } from './profile';
+import { administrationManagementDeleteDescription } from './delete';
 import { administrationManagementOptionsDescription } from './options';
 
 const showOnlyForAdministrationManagement = {
@@ -82,5 +83,6 @@ export const administrationManagementDescription: INodeProperties[] = [
 	...administrationManagementUpdateDescription,
 	...administrationManagementGroupDescription,
 	...administrationManagementProfileDescription,
+	...administrationManagementDeleteDescription,
 	...administrationManagementOptionsDescription,
 ];

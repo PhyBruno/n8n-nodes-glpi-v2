@@ -161,9 +161,9 @@ export class GlpiApi implements INodeType {
 				// Determina o itemtype baseado no resource e operation
 				let itemtype: string;
 				if (resource === 'Administration Management') {
-					if (operation === 'getGroup' || operation === 'createGroup' || operation === 'updateGroup') {
+					if (operation === 'getGroup' || operation === 'createGroup' || operation === 'updateGroup' || operation === 'deleteGroup') {
 						itemtype = 'Group';
-					} else if (operation === 'getProfile' || operation === 'createProfile' || operation === 'updateProfile') {
+					} else if (operation === 'getProfile' || operation === 'createProfile' || operation === 'updateProfile' || operation === 'deleteProfile') {
 						itemtype = 'Profile';
 					} else {
 						itemtype = 'User';
@@ -225,6 +225,23 @@ export class GlpiApi implements INodeType {
 								is_private: this.getNodeParameter('isPrivate', itemIndex) ? 1 : 0,
 							},
 						},
+						json: true,
+					};
+				} else if (operation === 'delete') {
+					const id = this.getNodeParameter('itemId', itemIndex);
+					options = {
+						method: 'DELETE',
+						url: `${baseUrl}/${itemtype}/${id}`,
+						headers,
+						json: true,
+					};
+				} else if (operation === 'deleteGroup' || operation === 'deleteProfile' || operation === 'deleteUser') {
+					const id = this.getNodeParameter('itemId', itemIndex);
+					// Itemtype is already determined for these operations in the initial block
+					options = {
+						method: 'DELETE',
+						url: `${baseUrl}/${itemtype}/${id}`,
+						headers,
 						json: true,
 					};
 				} else if (operation === 'solve') {

@@ -2,6 +2,7 @@ import type { INodeProperties } from 'n8n-workflow';
 import { toolManagementCreateDescription } from './create';
 import { toolManagementGetDescription } from './get';
 import { toolManagementUpdateDescription } from './update';
+import { toolManagementDeleteDescription } from './delete';
 import { toolManagementOptionsDescription } from './options';
 
 const showOnlyForToolManagement = {
@@ -36,6 +37,12 @@ export const toolManagementDescription: INodeProperties[] = [
 				action: 'Update an item',
 				description: 'Update an existing item',
 			},
+			{
+				name: 'Delete',
+				value: 'delete',
+				action: 'Delete an item',
+				description: 'Delete an item',
+			},
 		],
 		default: 'get',
 	},
@@ -61,5 +68,6 @@ export const toolManagementDescription: INodeProperties[] = [
 	...toolManagementCreateDescription,
 	...toolManagementGetDescription,
 	...toolManagementUpdateDescription,
+	...toolManagementDeleteDescription,
 	...toolManagementOptionsDescription,
 ];

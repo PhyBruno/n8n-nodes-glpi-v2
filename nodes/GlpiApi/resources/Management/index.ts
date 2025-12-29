@@ -2,6 +2,7 @@ import type { INodeProperties } from 'n8n-workflow';
 import { managementGetDescription } from './get';
 import { managementCreateDescription } from './create';
 import { managementUpdateDescription } from './update';
+import { managementDeleteDescription } from './delete';
 import { managementOptionsDescription } from './options';
 
 const showOnlyForManagement = {
@@ -35,6 +36,11 @@ export const managementDescription: INodeProperties[] = [
 				value: 'update',
 				action: 'Update an administration item',
 				description: 'Update an existing administration item',
+			},
+			{
+				name: 'Delete an Administration Item',
+				value: 'delete',
+				action: 'Delete an administration item',
 			},
 		],
 		default: 'get',
@@ -71,6 +77,7 @@ export const managementDescription: INodeProperties[] = [
 	...managementGetDescription,
 	...managementCreateDescription,
 	...managementUpdateDescription,
+	...managementDeleteDescription,
 	...managementOptionsDescription,
 ];
 
