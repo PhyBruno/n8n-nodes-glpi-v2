@@ -7,16 +7,6 @@ const showOnlyForManagementDelete = {
 
 export const managementDeleteDescription: INodeProperties[] = [
 	{
-		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
-		name: 'managementDeleteNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForManagementDelete,
-		},
-		description: 'Delete a management item',
-	},
-	{
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -26,5 +16,15 @@ export const managementDeleteDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the item to delete',
+	},
+	{
+		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
+		name: 'managementDeleteNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForManagementDelete,
+		},
+		description: 'Delete a management item',
 	},
 ];

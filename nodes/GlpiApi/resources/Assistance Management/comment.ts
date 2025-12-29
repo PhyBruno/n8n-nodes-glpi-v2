@@ -7,16 +7,6 @@ const showOnlyForAssistanceManagementComment = {
 
 export const assistanceManagementCommentDescription: INodeProperties[] = [
 	{
-		displayName: 'POST /apirest.php/ITILFollowup/{ItemType}/{ItemID}',
-		name: 'assistanceManagementCommentNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForAssistanceManagementComment,
-		},
-		description: 'Add a comment to an Assistance Management item',
-	},
-	{
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -26,6 +16,16 @@ export const assistanceManagementCommentDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the Assistance Management item to comment on',
+	},
+	{
+		displayName: 'POST /apirest.php/ITILFollowup/{ItemType}/{ItemID}',
+		name: 'assistanceManagementCommentNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAssistanceManagementComment,
+		},
+		description: 'Add a comment to an Assistance Management item',
 	},
 	{
 		displayName: 'Comment',

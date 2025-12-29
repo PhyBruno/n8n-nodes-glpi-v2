@@ -7,16 +7,6 @@ const showOnlyForSetupManagementDelete = {
 
 export const setupManagementDeleteDescription: INodeProperties[] = [
 	{
-		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
-		name: 'setupManagementDeleteNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForSetupManagementDelete,
-		},
-		description: 'Delete a setup management item',
-	},
-	{
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -26,5 +16,15 @@ export const setupManagementDeleteDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the item to delete',
+	},
+	{
+		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
+		name: 'setupManagementDeleteNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForSetupManagementDelete,
+		},
+		description: 'Delete a setup management item',
 	},
 ];

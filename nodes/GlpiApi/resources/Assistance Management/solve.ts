@@ -7,16 +7,6 @@ const showOnlyForAssistanceManagementSolve = {
 
 export const assistanceManagementSolveDescription: INodeProperties[] = [
 	{
-		displayName: 'POST /apirest.php/ITILSolution',
-		name: 'assistanceManagementSolveNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForAssistanceManagementSolve,
-		},
-		description: 'Solve an assistance management item (Ticket, Change, Problem)',
-	},
-	{
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -26,6 +16,16 @@ export const assistanceManagementSolveDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the item to solve',
+	},
+	{
+		displayName: 'POST /apirest.php/ITILSolution',
+		name: 'assistanceManagementSolveNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAssistanceManagementSolve,
+		},
+		description: 'Solve an assistance management item (Ticket, Change, Problem)',
 	},
 	{
 		displayName: 'User ID',

@@ -7,16 +7,6 @@ const showOnlyForToolManagementDelete = {
 
 export const toolManagementDeleteDescription: INodeProperties[] = [
 	{
-		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
-		name: 'toolManagementDeleteNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForToolManagementDelete,
-		},
-		description: 'Delete a tool management item',
-	},
-	{
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -26,5 +16,15 @@ export const toolManagementDeleteDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the item to delete',
+	},
+	{
+		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
+		name: 'toolManagementDeleteNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForToolManagementDelete,
+		},
+		description: 'Delete a tool management item',
 	},
 ];
