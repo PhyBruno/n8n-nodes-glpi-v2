@@ -20,19 +20,6 @@ export const administrationManagementUpdateDescription: INodeProperties[] = [
 		description: 'ID of the user to update',
 	},
 	{
-		displayName: 'PUT /apirest.php/User/{ItemID}',
-		name: 'administrationManagementUpdateNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: {
-				...showOnlyForAdministrationManagementUpdate,
-				operation: ['update', 'updateGroup'],
-			},
-		},
-		description: 'Update an existing user',
-	},
-	{
 		displayName: 'Group ID',
 		name: 'itemId',
 		type: 'number',
@@ -45,6 +32,32 @@ export const administrationManagementUpdateDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the group to update',
+	},
+	{
+		displayName: 'PUT /apirest.php/Group/{ItemID}',
+		name: 'administrationManagementUpdateGroupNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: {
+				...showOnlyForAdministrationManagementUpdate,
+				operation: ['updateGroup'],
+			},
+		},
+		description: 'Update an existing group',
+	},
+	{
+		displayName: 'PUT /apirest.php/User/{ItemID}',
+		name: 'administrationManagementUpdateNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: {
+				...showOnlyForAdministrationManagementUpdate,
+				operation: ['update'],
+			},
+		},
+		description: 'Update an existing user',
 	},
 	// Update User Fields
 	{
