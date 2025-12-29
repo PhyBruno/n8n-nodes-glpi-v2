@@ -164,7 +164,7 @@ export const administrationManagementCreateDescription: INodeProperties[] = [
 		],
 	},
 	{
-		displayName: 'POST /apirest.php/Group',
+		displayName: 'POST /apirest.php/{ItemType}',
 		name: 'administrationManagementCreateGroupNotice',
 		type: 'notice',
 		default: '',
