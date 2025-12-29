@@ -19,12 +19,12 @@ export const setupManagementDescription: INodeProperties[] = [
 			show: showOnlyForSetupManagement,
 		},
 		options: [
-			{
-				name: 'Create',
-				value: 'create',
-				action: 'Create an item',
-				description: 'Create a new item',
-			},
+			// {
+			// 	name: 'Create',
+			// 	value: 'create',
+			// 	action: 'Create an item',
+			// 	description: 'Create a new item',
+			// },
 			{
 				name: 'Get',
 				value: 'get',

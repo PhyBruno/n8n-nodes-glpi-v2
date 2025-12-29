@@ -18,12 +18,12 @@ export const AssetManagementDescription: INodeProperties[] = [
 			show: showOnlyForAssetManagement,
 		},
 		options: [
-		{
-			name: 'Create an Asset',
-			value: 'create',
-			action: 'Create a new asset',
-			description: 'Create a new asset',
-		},
+		// {
+		// 	name: 'Create an Asset',
+		// 	value: 'create',
+		// 	action: 'Create a new asset',
+		// 	description: 'Create a new asset',
+		// },
 		{
 			name: 'Get an Asset',
 			value: 'get',

@@ -19,12 +19,12 @@ export const managementDescription: INodeProperties[] = [
 			show: showOnlyForManagement,
 		},
 		options: [
-			{
-				name: 'Create an Administration Item',
-				value: 'create',
-				action: 'Create a new administration item',
-				description: 'Create a new administration item',
-			},
+			// {
+			// 	name: 'Create an Administration Item',
+			// 	value: 'create',
+			// 	action: 'Create a new administration item',
+			// 	description: 'Create a new administration item',
+			// },
 			{
 				name: 'Get an Administration Item',
 				value: 'get',
