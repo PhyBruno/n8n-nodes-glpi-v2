@@ -244,6 +244,23 @@ export class GlpiApi implements INodeType {
 						if (options.phone) input.phone = options.phone;
 						if (options.mobile) input.mobile = options.mobile;
 						if (options.realname) input.realname = options.realname;
+						if (options.mobile) input.mobile = options.mobile;
+						if (options.realname) input.realname = options.realname;
+					} else if (resource === 'Administration Management' && itemtype === 'Group') {
+						input.name = this.getNodeParameter('name', itemIndex) as string;
+						input.is_requester = this.getNodeParameter('is_requester', itemIndex, true) ? 1 : 0;
+						input.is_watcher = this.getNodeParameter('is_watcher', itemIndex, true) ? 1 : 0;
+						input.is_notify = this.getNodeParameter('is_notify', itemIndex, true) ? 1 : 0;
+						input.is_usergroup = this.getNodeParameter('is_usergroup', itemIndex, true) ? 1 : 0;
+						
+						const options = this.getNodeParameter('options', itemIndex, {}) as IDataObject;
+						if (options.code) input.code = options.code;
+						if (options.recursive_membership !== undefined) input.recursive_membership = options.recursive_membership ? 1 : 0;
+						if (options.groups_id) input.groups_id = options.groups_id;
+						if (options.comment) input.comment = options.comment;
+						if (options.is_manager !== undefined) input.is_manager = options.is_manager ? 1 : 0;
+						if (options.is_assign !== undefined) input.is_assign = options.is_assign ? 1 : 0;
+						if (options.is_task !== undefined) input.is_task = options.is_task ? 1 : 0;
 					}
 
 					options = {

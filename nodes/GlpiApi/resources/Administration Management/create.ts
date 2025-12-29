@@ -5,6 +5,11 @@ const showOnlyForAdministrationManagementCreate = {
 	resource: ['Administration Management'],
 };
 
+const showOnlyForAdministrationManagementCreateGroup = {
+	operation: ['createGroup'],
+	resource: ['Administration Management'],
+};
+
 export const administrationManagementCreateDescription: INodeProperties[] = [
 	{
 		displayName: 'POST /apirest.php/{ItemType}',
@@ -159,4 +164,115 @@ export const administrationManagementCreateDescription: INodeProperties[] = [
 		],
 	},
 	// Future UI fields will be added here
+	{
+		displayName: 'Name',
+		name: 'name',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreateGroup,
+		},
+		description: 'Name of the group',
+	},
+	{
+		displayName: 'Requester',
+		name: 'is_requester',
+		type: 'boolean',
+		default: true,
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreateGroup,
+		},
+		description: 'Whether the group can be a requester',
+	},
+	{
+		displayName: 'Observer',
+		name: 'is_watcher',
+		type: 'boolean',
+		default: true,
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreateGroup,
+		},
+		description: 'Whether the group can be an observer',
+	},
+	{
+		displayName: 'Can Be Notified',
+		name: 'is_notify',
+		type: 'boolean',
+		default: true,
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreateGroup,
+		},
+		description: 'Whether the group can be notified',
+	},
+	{
+		displayName: 'Can Contain Users',
+		name: 'is_usergroup',
+		type: 'boolean',
+		default: true,
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreateGroup,
+		},
+		description: 'Whether the group can contain users',
+	},
+	{
+		displayName: 'Options',
+		name: 'options',
+		type: 'collection',
+		placeholder: 'Add Option',
+		default: {},
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreateGroup,
+		},
+		options: [
+			{
+				displayName: 'As Child Of (ID)',
+				name: 'groups_id',
+				type: 'number',
+				default: 0,
+				description: 'ID of the parent group',
+			},
+			{
+				displayName: 'Assigned To',
+				name: 'is_assign',
+				type: 'boolean',
+				default: false,
+				description: 'Whether the group can be assigned to',
+			},
+			{
+				displayName: 'Can Be Manager',
+				name: 'is_manager',
+				type: 'boolean',
+				default: false,
+				description: 'Whether the group can be a manager',
+			},
+			{
+				displayName: 'Code',
+				name: 'code',
+				type: 'string',
+				default: '',
+				description: 'Code of the group',
+			},
+			{
+				displayName: 'Comments',
+				name: 'comment',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Recursive Membership',
+				name: 'recursive_membership',
+				type: 'boolean',
+				default: false,
+				description: 'Whether the group membership is recursive',
+			},
+			{
+				displayName: 'Task',
+				name: 'is_task',
+				type: 'boolean',
+				default: false,
+				description: 'Whether the group can be a task',
+			},
+		],
+	},
 ];

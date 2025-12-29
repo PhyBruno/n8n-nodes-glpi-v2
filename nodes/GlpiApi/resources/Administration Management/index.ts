@@ -28,12 +28,6 @@ export const administrationManagementDescription: INodeProperties[] = [
 				description: 'Create a new group',
 			},
 			{
-				name: 'Create a Profile',
-				value: 'createProfile',
-				action: 'Create a new profile',
-				description: 'Create a new profile',
-			},
-			{
 				name: 'Create a User',
 				value: 'create',
 				action: 'Create a new user',
