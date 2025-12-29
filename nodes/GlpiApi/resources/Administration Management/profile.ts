@@ -15,19 +15,6 @@ export const administrationManagementProfileDescription: INodeProperties[] = [
 		description: 'Create a new profile',
 	},
 	{
-		displayName: 'GET /apirest.php/Profile/{ItemID}',
-		name: 'profileGetNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['Administration Management'],
-				operation: ['getProfile'],
-			},
-		},
-		description: 'Retrieve a specific profile by its ID',
-	},
-	{
 		displayName: 'Profile ID',
 		name: 'itemId',
 		type: 'number',
@@ -39,6 +26,19 @@ export const administrationManagementProfileDescription: INodeProperties[] = [
 		},
 		default: 0,
 		description: 'ID of the profile to retrieve or update. Leave empty to get all profiles.',
+	},
+	{
+		displayName: 'GET /apirest.php/Profile/{ItemID}',
+		name: 'profileGetNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['Administration Management'],
+				operation: ['getProfile'],
+			},
+		},
+		description: 'Retrieve a specific profile by its ID',
 	},
 	{
 		displayName: 'PUT /apirest.php/Profile/{ItemID}',

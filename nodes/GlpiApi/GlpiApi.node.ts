@@ -65,7 +65,7 @@ export class GlpiApi implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'GLPI Rest API',
 		name: 'glpiApi',
-		icon: 'file:glpi.svg',
+		icon: 'file:glpi_v2.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
