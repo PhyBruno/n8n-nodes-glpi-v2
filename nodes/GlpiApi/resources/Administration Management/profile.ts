@@ -2,6 +2,45 @@ import type { INodeProperties } from 'n8n-workflow';
 
 export const administrationManagementProfileDescription: INodeProperties[] = [
 	{
+		displayName: 'POST /apirest.php/Profile',
+		name: 'profileCreateNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['Administration Management'],
+				operation: ['createProfile'],
+			},
+		},
+		description: 'Create a new profile',
+	},
+	{
+		displayName: 'GET /apirest.php/Profile/{ItemID}',
+		name: 'profileGetNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['Administration Management'],
+				operation: ['getProfile'],
+			},
+		},
+		description: 'Retrieve a specific profile by its ID',
+	},
+	{
+		displayName: 'PUT /apirest.php/Profile/{ItemID}',
+		name: 'profileUpdateNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['Administration Management'],
+				operation: ['updateProfile'],
+			},
+		},
+		description: 'Update an existing profile',
+	},
+	{
 		displayName: 'Profile ID',
 		name: 'itemId',
 		type: 'number',

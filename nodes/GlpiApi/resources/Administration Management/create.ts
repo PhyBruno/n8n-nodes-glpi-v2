@@ -7,6 +7,16 @@ const showOnlyForAdministrationManagementCreate = {
 
 export const administrationManagementCreateDescription: INodeProperties[] = [
 	{
+		displayName: 'POST /apirest.php/{ItemType}',
+		name: 'administrationManagementCreateNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreate,
+		},
+		description: 'Create a new user or group or profile',
+	},
+	{
 		displayName: 'Payload (JSON)',
 		name: 'payload',
 		type: 'json',
@@ -17,4 +27,3 @@ export const administrationManagementCreateDescription: INodeProperties[] = [
 		description: 'JSON payload to create the user',
 	},
 ];
-

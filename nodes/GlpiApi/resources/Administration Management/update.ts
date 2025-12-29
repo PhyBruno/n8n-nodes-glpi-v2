@@ -7,6 +7,16 @@ const showOnlyForAdministrationManagementUpdate = {
 
 export const administrationManagementUpdateDescription: INodeProperties[] = [
 	{
+		displayName: 'PUT /apirest.php/User/{ItemID}',
+		name: 'administrationManagementUpdateNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAdministrationManagementUpdate,
+		},
+		description: 'Update an existing user',
+	},
+	{
 		displayName: 'User ID',
 		name: 'itemId',
 		type: 'number',
