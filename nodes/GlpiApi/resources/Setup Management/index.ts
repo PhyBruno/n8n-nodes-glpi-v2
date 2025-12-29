@@ -31,12 +31,12 @@ export const setupManagementDescription: INodeProperties[] = [
 				action: 'Get an item',
 				description: 'Get an item',
 			},
-			{
-				name: 'Update',
-				value: 'update',
-				action: 'Update an item',
-				description: 'Update an existing item',
-			},
+			// {
+			// 	name: 'Update',
+			// 	value: 'update',
+			// 	action: 'Update an item',
+			// 	description: 'Update an existing item',
+			// },
 			{
 				name: 'Delete',
 				value: 'delete',

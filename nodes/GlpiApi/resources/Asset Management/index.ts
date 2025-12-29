@@ -30,12 +30,12 @@ export const AssetManagementDescription: INodeProperties[] = [
 			action: 'Get an asset',
 			description: 'Get the data of a single asset',
 		},
-			{
-			name: 'Update an Asset',
-			value: 'update',
-			action: 'Update an asset',
-			description: 'Update an existing asset',
-		},
+			// {
+			// name: 'Update an Asset',
+			// value: 'update',
+			// action: 'Update an asset',
+			// description: 'Update an existing asset',
+			// },
 		{
 			name: 'Delete an Asset',
 			value: 'delete',

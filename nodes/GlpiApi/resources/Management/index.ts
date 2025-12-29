@@ -31,12 +31,12 @@ export const managementDescription: INodeProperties[] = [
 				action: 'Get an administration item',
 				description: 'Get the data of a single administration item',
 			},
-			{
-				name: 'Update an Administration Item',
-				value: 'update',
-				action: 'Update an administration item',
-				description: 'Update an existing administration item',
-			},
+			// {
+			// 	name: 'Update an Administration Item',
+			// 	value: 'update',
+			// 	action: 'Update an administration item',
+			// 	description: 'Update an existing administration item',
+			// },
 			{
 				name: 'Delete an Administration Item',
 				value: 'delete',
