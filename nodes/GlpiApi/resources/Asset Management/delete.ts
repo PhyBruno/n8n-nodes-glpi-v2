@@ -7,6 +7,16 @@ const showOnlyForAssetManagementDelete = {
 
 export const assetManagementDeleteDescription: INodeProperties[] = [
 	{
+		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
+		name: 'assetManagementDeleteNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAssetManagementDelete,
+		},
+		description: 'Delete an asset',
+	},
+	{
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -16,15 +26,5 @@ export const assetManagementDeleteDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the asset to delete',
-	},
-	{
-		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
-		name: 'assetManagementDeleteNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForAssetManagementDelete,
-		},
-		description: 'Delete an asset',
 	},
 ];
