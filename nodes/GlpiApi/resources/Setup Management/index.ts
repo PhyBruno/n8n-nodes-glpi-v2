@@ -2,6 +2,7 @@ import type { INodeProperties } from 'n8n-workflow';
 import { setupManagementCreateDescription } from './create';
 import { setupManagementGetDescription } from './get';
 import { setupManagementUpdateDescription } from './update';
+import { setupManagementDeleteDescription } from './delete';
 import { setupManagementOptionsDescription } from './options';
 
 const showOnlyForSetupManagement = {
@@ -36,6 +37,12 @@ export const setupManagementDescription: INodeProperties[] = [
 				action: 'Update an item',
 				description: 'Update an existing item',
 			},
+			{
+				name: 'Delete',
+				value: 'delete',
+				action: 'Delete an item',
+			},
+
 		],
 		default: 'get',
 	},
@@ -81,5 +88,6 @@ export const setupManagementDescription: INodeProperties[] = [
 	...setupManagementCreateDescription,
 	...setupManagementGetDescription,
 	...setupManagementUpdateDescription,
+	...setupManagementDeleteDescription,
 	...setupManagementOptionsDescription,
 ];
