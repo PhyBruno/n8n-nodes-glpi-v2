@@ -196,22 +196,20 @@ export class GlpiApi implements INodeType {
 						json: true,
 					};
 				} else if (normalizedOperation === 'create') {
-					const payload = this.getNodeParameter('payload', itemIndex);
 					options = {
 						method: 'POST',
 						url: `${baseUrl}/${itemtype}`,
 						headers,
-						body: { input: typeof payload === 'string' ? JSON.parse(payload) : payload },
+						body: { input: {} },
 						json: true,
 					};
 				} else if (normalizedOperation === 'update') {
 					const id = this.getNodeParameter('itemId', itemIndex);
-					const payload = this.getNodeParameter('payload', itemIndex);
 					options = {
 						method: 'PUT',
 						url: `${baseUrl}/${itemtype}/${id}`,
 						headers,
-						body: { input: typeof payload === 'string' ? JSON.parse(payload) : payload },
+						body: { input: {} },
 						json: true,
 					};
 				} else if (operation === 'comment') {
