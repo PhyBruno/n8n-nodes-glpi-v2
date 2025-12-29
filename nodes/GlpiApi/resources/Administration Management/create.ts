@@ -163,7 +163,16 @@ export const administrationManagementCreateDescription: INodeProperties[] = [
 			},
 		],
 	},
-	// Future UI fields will be added here
+	{
+		displayName: 'POST /apirest.php/Group',
+		name: 'administrationManagementCreateGroupNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAdministrationManagementCreateGroup,
+		},
+		description: 'Create a new group',
+	},
 	{
 		displayName: 'Name',
 		name: 'name',
@@ -274,15 +283,5 @@ export const administrationManagementCreateDescription: INodeProperties[] = [
 				description: 'Whether the group can be a task',
 			},
 		],
-	},
-	{
-		displayName: 'POST /apirest.php/Group',
-		name: 'administrationManagementCreateGroupNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForAdministrationManagementCreateGroup,
-		},
-		description: 'Create a new group',
 	},
 ];

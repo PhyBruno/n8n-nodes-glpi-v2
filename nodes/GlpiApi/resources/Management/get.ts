@@ -7,16 +7,6 @@ const showOnlyForManagementGet = {
 
 export const managementGetDescription: INodeProperties[] = [
     {
-		displayName: 'GET /apirest.php/{ItemType}/{ItemID}',
-		name: 'administrationManagementGetNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForManagementGet,
-		},
-		description: 'Get the data of a single administration item. The ItemType Can be: User, Group and Profile.',
-	},
-    {
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -25,6 +15,16 @@ export const managementGetDescription: INodeProperties[] = [
 		},
 		default: 0,
 		description: 'ID of the administration item to retrieve. Leave empty to get all items of the selected type.',
+	},
+    {
+		displayName: 'GET /apirest.php/{ItemType}/{ItemID}',
+		name: 'administrationManagementGetNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForManagementGet,
+		},
+		description: 'Get the data of a single administration item. The ItemType Can be: User, Group and Profile.',
 	},
 ];
 
