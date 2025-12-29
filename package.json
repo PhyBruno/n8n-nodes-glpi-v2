@@ -1,6 +1,6 @@
 {
 	"name": "@justbrunasso/n8n-nodes-glpi",
-	"version": "1.0.80",
+	"version": "1.0.81",
 	"description": "GLPI Rest API Node compatible with GLPI 9.x and above.",
 	"license": "MIT",
 	"homepage": "https://github.com/PhyBruno/n8n-nodes-glpi",
@@ -34,9 +34,7 @@
 		"n8nNodesApiVersion": 1,
 		"strict": true,
 		"credentials": [
-			"dist/credentials/GlpiApi.credentials.js",
-			"dist/credentials/GithubIssuesApi.credentials.js",
-			"dist/credentials/GithubIssuesOAuth2Api.credentials.js"
+			"dist/credentials/GlpiApi.credentials.js"
 		],
 		"nodes": [
 			"dist/nodes/GlpiApi/GlpiApi.node.js"
