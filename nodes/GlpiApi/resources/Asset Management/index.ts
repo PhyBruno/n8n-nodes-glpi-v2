@@ -2,7 +2,6 @@ import type { INodeProperties } from 'n8n-workflow';
 import { AssetManagementGetDescription } from './get';
 import { AssetManagementCreateDescription } from './create';
 import { AssetManagementUpdateDescription } from './update';
-import { assetManagementCustomApiCallDescription } from './customApiCall';
 import { assetManagementOptionsDescription } from './options';
 
 const showOnlyForAssetManagement = {
@@ -24,12 +23,6 @@ export const AssetManagementDescription: INodeProperties[] = [
 			value: 'create',
 			action: 'Create a new asset',
 			description: 'Create a new asset',
-		},
-		{
-			name: 'Custom API Call',
-			value: 'customApiCall',
-			action: 'Make a custom API call',
-			description: 'Make a custom API call with full control',
 		},
 		{
 			name: 'Get an Asset',
@@ -80,7 +73,6 @@ export const AssetManagementDescription: INodeProperties[] = [
 	...AssetManagementGetDescription,
 	...AssetManagementCreateDescription,
 	...AssetManagementUpdateDescription,
-	...assetManagementCustomApiCallDescription,
 	...assetManagementOptionsDescription,
 ];
 

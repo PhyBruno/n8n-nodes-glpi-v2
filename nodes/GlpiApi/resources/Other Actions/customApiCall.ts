@@ -1,17 +1,17 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-const showOnlyForAssetManagementCustomApiCall = {
+const showOnlyForOtherActions = {
 	operation: ['customApiCall'],
-	resource: ['Asset Management'],
+	resource: ['Other Actions'],
 };
 
-export const assetManagementCustomApiCallDescription: INodeProperties[] = [
+export const otherActionsCustomApiCallDescription: INodeProperties[] = [
 	{
 		displayName: 'HTTP Method',
 		name: 'method',
 		type: 'options',
 		displayOptions: {
-			show: showOnlyForAssetManagementCustomApiCall,
+			show: showOnlyForOtherActions,
 		},
 		options: [
 			{ name: 'DELETE', value: 'DELETE' },
@@ -29,19 +29,19 @@ export const assetManagementCustomApiCallDescription: INodeProperties[] = [
 		name: 'endpoint',
 		type: 'string',
 		displayOptions: {
-			show: showOnlyForAssetManagementCustomApiCall,
+			show: showOnlyForOtherActions,
 		},
 		default: '',
-		placeholder: '/Computer/123',
+		placeholder: '/User/123',
 		required: true,
-		description: 'API endpoint path (e.g., /Computer/123 or /Monitor)',
+		description: 'API endpoint path (e.g., /User/123 or /Group)',
 	},
 	{
 		displayName: 'Request Body',
 		name: 'body',
 		type: 'json',
 		displayOptions: {
-			show: showOnlyForAssetManagementCustomApiCall,
+			show: showOnlyForOtherActions,
 		},
 		default: '{}',
 		description: 'JSON body for POST, PUT, or PATCH requests',
@@ -54,7 +54,7 @@ export const assetManagementCustomApiCallDescription: INodeProperties[] = [
 			multipleValues: true,
 		},
 		displayOptions: {
-			show: showOnlyForAssetManagementCustomApiCall,
+			show: showOnlyForOtherActions,
 		},
 		default: {},
 		placeholder: 'Add Header',

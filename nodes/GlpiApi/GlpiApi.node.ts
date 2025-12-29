@@ -3,6 +3,7 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
+	IHttpRequestMethods,
 	IHttpRequestOptions,
 } from 'n8n-workflow';
 import { NodeConnectionTypes, NodeOperationError, ApplicationError } from 'n8n-workflow';
@@ -10,6 +11,7 @@ import { assistanceManagementDescription } from './resources/Assistance Manageme
 import { administrationManagementDescription } from './resources/Administration Management';
 import { AssetManagementDescription } from './resources/Asset Management';
 import { managementDescription } from './resources/Management';
+import { otherActionsDescription } from './resources/Other Actions';
 import { toolManagementDescription } from './resources/Tool Management';
 import { setupManagementDescription } from './resources/Setup Management';
 
@@ -99,6 +101,10 @@ export class GlpiApi implements INodeType {
 						value: 'Management',
 					},
 					{
+						name: 'Other Action',
+						value: 'Other Actions',
+					},
+					{
 						name: 'Setup Management',
 						value: 'Setup Management',
 					},
@@ -113,6 +119,7 @@ export class GlpiApi implements INodeType {
 			...administrationManagementDescription,
 			...AssetManagementDescription,
 			...managementDescription,
+			...otherActionsDescription,
 			...toolManagementDescription,
 			...setupManagementDescription,
 		],
@@ -222,6 +229,41 @@ export class GlpiApi implements INodeType {
 						},
 						json: true,
 					};
+				} else if (operation === 'customApiCall') {
+					const method = this.getNodeParameter('method', itemIndex) as string;
+					const endpoint = this.getNodeParameter('endpoint', itemIndex) as string;
+					const rawBody = this.getNodeParameter('body', itemIndex, '{}') as string;
+					
+					// Handle optional custom headers
+					const additionalHeaders = this.getNodeParameter('headers', itemIndex) as {
+						header?: Array<{ name: string; value: string }>;
+					};
+					
+					// Merge default headers with custom headers
+					const customHeaders: { [key: string]: string } = {};
+					if (additionalHeaders.header) {
+						additionalHeaders.header.forEach((header) => {
+							customHeaders[header.name] = header.value;
+						});
+					}
+
+					options = {
+						method: method as IHttpRequestMethods,
+						url: `${baseUrl}${endpoint}`,
+						headers: {
+							...headers,
+							...customHeaders,
+						},
+						json: true,
+					};
+
+					if (method !== 'GET' && method !== 'DELETE') {
+						try {
+							options.body = typeof rawBody === 'string' ? JSON.parse(rawBody) : rawBody;
+						} catch {
+							options.body = rawBody;
+						}
+					}
 				} else {
 					throw new ApplicationError(`Unknown operation: ${operation}`, { level: 'warning' });
 				}

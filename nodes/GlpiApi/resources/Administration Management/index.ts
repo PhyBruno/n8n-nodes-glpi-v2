@@ -4,7 +4,6 @@ import { administrationManagementCreateDescription } from './create';
 import { administrationManagementUpdateDescription } from './update';
 import { administrationManagementGroupDescription } from './group';
 import { administrationManagementProfileDescription } from './profile';
-import { administrationManagementCustomApiCallDescription } from './customApiCall';
 import { administrationManagementOptionsDescription } from './options';
 
 const showOnlyForAdministrationManagement = {
@@ -38,12 +37,6 @@ export const administrationManagementDescription: INodeProperties[] = [
                 value: 'create',
                 action: 'Create a new user',
                 description: 'Create a new user',
-            },
-            {
-                name: 'Custom API Call',
-                value: 'customApiCall',
-                action: 'Make a custom API call',
-                description: 'Make a custom API call with full control',
             },
             {
                 name: 'Get a Group',
@@ -89,7 +82,5 @@ export const administrationManagementDescription: INodeProperties[] = [
 	...administrationManagementUpdateDescription,
 	...administrationManagementGroupDescription,
 	...administrationManagementProfileDescription,
-	...administrationManagementCustomApiCallDescription,
 	...administrationManagementOptionsDescription,
 ];
-

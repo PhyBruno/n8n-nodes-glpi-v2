@@ -2,7 +2,6 @@ import type { INodeProperties } from 'n8n-workflow';
 import { managementGetDescription } from './get';
 import { managementCreateDescription } from './create';
 import { managementUpdateDescription } from './update';
-import { managementCustomApiCallDescription } from './customApiCall';
 import { managementOptionsDescription } from './options';
 
 const showOnlyForManagement = {
@@ -24,12 +23,6 @@ export const managementDescription: INodeProperties[] = [
 				value: 'create',
 				action: 'Create a new administration item',
 				description: 'Create a new administration item',
-			},
-			{
-				name: 'Custom API Call',
-				value: 'customApiCall',
-				action: 'Make a custom API call',
-				description: 'Make a custom API call with full control',
 			},
 			{
 				name: 'Get an Administration Item',
@@ -78,7 +71,6 @@ export const managementDescription: INodeProperties[] = [
 	...managementGetDescription,
 	...managementCreateDescription,
 	...managementUpdateDescription,
-	...managementCustomApiCallDescription,
 	...managementOptionsDescription,
 ];
 

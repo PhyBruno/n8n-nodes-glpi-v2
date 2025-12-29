@@ -2,7 +2,6 @@ import type { INodeProperties } from 'n8n-workflow';
 import { setupManagementCreateDescription } from './create';
 import { setupManagementGetDescription } from './get';
 import { setupManagementUpdateDescription } from './update';
-import { setupManagementCustomApiCallDescription } from './customApiCall';
 import { setupManagementOptionsDescription } from './options';
 
 const showOnlyForSetupManagement = {
@@ -24,12 +23,6 @@ export const setupManagementDescription: INodeProperties[] = [
 				value: 'create',
 				action: 'Create an item',
 				description: 'Create a new item',
-			},
-			{
-				name: 'Custom API Call',
-				value: 'customApiCall',
-				action: 'Make a custom API call',
-				description: 'Make a custom API call with full control',
 			},
 			{
 				name: 'Get',
@@ -88,6 +81,5 @@ export const setupManagementDescription: INodeProperties[] = [
 	...setupManagementCreateDescription,
 	...setupManagementGetDescription,
 	...setupManagementUpdateDescription,
-	...setupManagementCustomApiCallDescription,
 	...setupManagementOptionsDescription,
 ];

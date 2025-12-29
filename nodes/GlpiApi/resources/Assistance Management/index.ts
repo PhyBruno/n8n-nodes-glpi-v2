@@ -3,7 +3,6 @@ import { assistanceManagementGetDescription } from './get';
 import { assistanceManagementCreateDescription } from './create';
 import { assistanceManagementUpdateDescription } from './update';
 import { assistanceManagementCommentDescription } from './comment';
-import { assistanceManagementCustomApiCallDescription } from './customApiCall';
 import { assistanceManagementOptionsDescription } from './options';
 
 const showOnlyForAssistanceManagement = {
@@ -31,12 +30,6 @@ export const assistanceManagementDescription: INodeProperties[] = [
 				value: 'create',
 				action: 'Create a new assistance management item',
 				description: 'Create a new Assistance Management item',
-			},
-			{
-				name: 'Custom API Call',
-				value: 'customApiCall',
-				action: 'Make a custom API call',
-				description: 'Make a custom API call with full control',
 			},
 			{
 				name: 'Get an Assistance Management Item',
@@ -75,6 +68,5 @@ export const assistanceManagementDescription: INodeProperties[] = [
 	...assistanceManagementCreateDescription,
 	...assistanceManagementUpdateDescription,
 	...assistanceManagementCommentDescription,
-	...assistanceManagementCustomApiCallDescription,
 	...assistanceManagementOptionsDescription,
 ];
