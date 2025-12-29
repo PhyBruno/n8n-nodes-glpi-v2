@@ -201,19 +201,20 @@ export class GlpiApi implements INodeType {
 					if (resource === 'Assistance Management') {
 						input.name = this.getNodeParameter('title', itemIndex) as string;
 						input.content = this.getNodeParameter('description', itemIndex) as string;
-						input.status = this.getNodeParameter('status', itemIndex) as number;
+						input.status = this.getNodeParameter('status_ticket', itemIndex, 0) as number ||
+									   this.getNodeParameter('status_problem', itemIndex, 0) as number ||
+									   this.getNodeParameter('status_change', itemIndex, 0) as number;
 						
-						const date = this.getNodeParameter('opening_date', itemIndex, '') as string;
-						if (date) input.date = date;
+						// Remove opening_date logic as requested
+						// const date = this.getNodeParameter('opening_date', itemIndex, '') as string;
+						// if (date) input.date = date;
 
-						const categoryId = this.getNodeParameter('itilcategories_id', itemIndex, 0) as number;
-						if (categoryId) input.itilcategories_id = categoryId;
+						const options = this.getNodeParameter('options', itemIndex, {}) as IDataObject;
+						if (options.itilcategories_id) input.itilcategories_id = options.itilcategories_id;
+						if (options.users_id_observer) input._users_id_observer = options.users_id_observer;
 
 						const requester = this.getNodeParameter('users_id_requester', itemIndex, '') as string;
 						if (requester) input._users_id_requester = requester;
-
-						const observer = this.getNodeParameter('users_id_observer', itemIndex, '') as string;
-						if (observer) input._users_id_observer = observer;
 
 						const assign = this.getNodeParameter('users_id_assign', itemIndex, 0) as number;
 						if (assign) input._users_id_assign = assign;
@@ -237,20 +238,23 @@ export class GlpiApi implements INodeType {
 						const description = this.getNodeParameter('description', itemIndex, '') as string;
 						if (description) input.content = description;
 
-						const status = this.getNodeParameter('status', itemIndex, 0) as number;
+						if (description) input.content = description;
+
+						const status = this.getNodeParameter('status_ticket', itemIndex, 0) as number ||
+									   this.getNodeParameter('status_problem', itemIndex, 0) as number ||
+									   this.getNodeParameter('status_change', itemIndex, 0) as number;
 						if (status) input.status = status;
 
-						const date = this.getNodeParameter('opening_date', itemIndex, '') as string;
-						if (date) input.date = date;
+						// Remove opening_date logic
+						// const date = this.getNodeParameter('opening_date', itemIndex, '') as string;
+						// if (date) input.date = date;
 
-						const categoryId = this.getNodeParameter('itilcategories_id', itemIndex, 0) as number;
-						if (categoryId) input.itilcategories_id = categoryId;
+						const options = this.getNodeParameter('options', itemIndex, {}) as IDataObject;
+						if (options.itilcategories_id) input.itilcategories_id = options.itilcategories_id;
+						if (options.users_id_observer) input._users_id_observer = options.users_id_observer;
 
 						const requester = this.getNodeParameter('users_id_requester', itemIndex, '') as string;
 						if (requester) input._users_id_requester = requester;
-
-						const observer = this.getNodeParameter('users_id_observer', itemIndex, '') as string;
-						if (observer) input._users_id_observer = observer;
 
 						const assign = this.getNodeParameter('users_id_assign', itemIndex, 0) as number;
 						if (assign) input._users_id_assign = assign;

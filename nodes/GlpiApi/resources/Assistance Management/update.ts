@@ -18,6 +18,18 @@ export const assistanceManagementUpdateDescription: INodeProperties[] = [
 		description: 'ID of the Assistance Management item to update',
 	},
 	{
+		displayName: 'PUT /apirest.php/{ItemType}/{ItemID}',
+		name: 'assistanceManagementUpdateNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAssistanceManagementUpdate,
+		},
+		description:
+			'Update an existing Assistance Management item (Ticket, Change, Problem, etc.). ' +
+			'The payload must be a valid JSON object.',
+	},
+	{
 		displayName: 'Title',
 		name: 'title',
 		type: 'string',
@@ -38,33 +50,69 @@ export const assistanceManagementUpdateDescription: INodeProperties[] = [
 		description: 'Content/Description of the item',
 	},
 	{
-		displayName: 'Opening Date',
-		name: 'opening_date',
-		type: 'dateTime',
-		default: '',
+		displayName: 'Status',
+		name: 'status_ticket',
+		type: 'options',
+		default: 1,
 		displayOptions: {
-			show: showOnlyForAssistanceManagementUpdate,
+			show: {
+				...showOnlyForAssistanceManagementUpdate,
+				itemtype: ['Ticket'],
+			},
 		},
-		description: 'Date of creation',
+		options: [
+			{ name: 'New', value: 1 },
+			{ name: 'Processing (Assigned)', value: 2 },
+			{ name: 'Processing (Planned)', value: 3 },
+			{ name: 'Pending', value: 4 },
+			{ name: 'Solved', value: 5 },
+			{ name: 'Closed', value: 6 },
+		],
+		description: 'Status of the ticket',
 	},
 	{
 		displayName: 'Status',
-		name: 'status',
-		type: 'number',
+		name: 'status_problem',
+		type: 'options',
 		default: 1,
 		displayOptions: {
-			show: showOnlyForAssistanceManagementUpdate,
+			show: {
+				...showOnlyForAssistanceManagementUpdate,
+				itemtype: ['Problem'],
+			},
 		},
-		description: 'Status ID of the item',
+		options: [
+			{ name: 'New', value: 1 },
+			{ name: 'Processing (Assigned)', value: 2 },
+			{ name: 'Processing (Planned)', value: 3 },
+			{ name: 'Pending', value: 4 },
+			{ name: 'Solved', value: 5 },
+			{ name: 'Closed', value: 6 },
+			{ name: 'Accepted', value: 7 },
+			{ name: 'Under Observation', value: 8 },
+		],
+		description: 'Status of the problem',
 	},
 	{
-		displayName: 'Category ID',
-		name: 'itilcategories_id',
-		type: 'number',
-		default: 0,
+		displayName: 'Status',
+		name: 'status_change',
+		type: 'options',
+		default: 1,
 		displayOptions: {
-			show: showOnlyForAssistanceManagementUpdate,
+			show: {
+				...showOnlyForAssistanceManagementUpdate,
+				itemtype: ['Change'],
+			},
 		},
+		options: [
+			{ name: 'New', value: 1 },
+			{ name: 'Pending', value: 4 },
+			{ name: 'Solved', value: 5 },
+			{ name: 'Closed', value: 6 },
+			{ name: 'Accepted', value: 7 },
+			{ name: 'Review', value: 8 },
+		],
+		description: 'Status of the change',
 	},
 	{
 		displayName: 'Requester (ID or Email)',
@@ -77,16 +125,6 @@ export const assistanceManagementUpdateDescription: INodeProperties[] = [
 		description: 'User ID or Email of the requester',
 	},
 	{
-		displayName: 'Observer (ID or Email)',
-		name: 'users_id_observer',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: showOnlyForAssistanceManagementUpdate,
-		},
-		description: 'User ID or Email of the observer',
-	},
-	{
 		displayName: 'Assigned To (ID)',
 		name: 'users_id_assign',
 		type: 'number',
@@ -96,5 +134,29 @@ export const assistanceManagementUpdateDescription: INodeProperties[] = [
 		},
 		description: 'User ID to assign the item to',
 	},
-	// Future UI fields will be added here
+	{
+		displayName: 'Options',
+		name: 'options',
+		type: 'collection',
+		placeholder: 'Add Option',
+		default: {},
+		displayOptions: {
+			show: showOnlyForAssistanceManagementUpdate,
+		},
+		options: [
+			{
+				displayName: 'Category ID',
+				name: 'itilcategories_id',
+				type: 'number',
+				default: 0,
+			},
+			{
+				displayName: 'Observer (ID or Email)',
+				name: 'users_id_observer',
+				type: 'string',
+				default: '',
+				description: 'User ID or Email of the observer',
+			},
+		],
+	},
 ];
