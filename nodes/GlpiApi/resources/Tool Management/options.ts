@@ -14,7 +14,18 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 			},
 		},
 		options: [
-			// Project Options
+			{
+				displayName: 'As Child of (Task ID)',
+				name: 'projecttasks_id',
+				type: 'number',
+				default: 0,
+				displayOptions: {
+					show: {
+						itemtype: ['ProjectTask'],
+					},
+				},
+				description: 'ID of the parent task',
+			},
 			{
 				displayName: 'Code',
 				name: 'code',
@@ -27,82 +38,6 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 				},
 				description: 'Code of the project',
 			},
-			{
-				displayName: 'Comments',
-				name: 'comment',
-				type: 'string',
-				default: '',
-				typeOptions: {
-					alwaysOpenEditWindow: true,
-				},
-				displayOptions: {
-					show: {
-						itemtype: ['Project'],
-					},
-				},
-				description: 'Comments for the project',
-			},
-			{
-				displayName: 'Group ID',
-				name: 'groups_id',
-				type: 'number',
-				default: 0,
-				displayOptions: {
-					show: {
-						itemtype: ['Project'],
-					},
-				},
-				description: 'ID of the group',
-			},
-			{
-				displayName: 'Manager User ID',
-				name: 'users_id',
-				type: 'number',
-				default: 0,
-				displayOptions: {
-					show: {
-						itemtype: ['Project'],
-					},
-				},
-				description: 'ID of the manager user',
-			},
-			{
-				displayName: 'Priority',
-				name: 'priority',
-				type: 'number',
-				default: 3,
-				displayOptions: {
-					show: {
-						itemtype: ['Project'],
-					},
-				},
-				description: 'Priority of the project',
-			},
-			{
-				displayName: 'State ID',
-				name: 'projectstates_id',
-				type: 'number',
-				default: 0,
-				displayOptions: {
-					show: {
-						itemtype: ['Project'],
-					},
-				},
-				description: 'ID of the project state',
-			},
-			{
-				displayName: 'Type ID',
-				name: 'projecttypes_id',
-				type: 'number',
-				default: 0,
-				displayOptions: {
-					show: {
-						itemtype: ['Project'],
-					},
-				},
-				description: 'ID of the project type',
-			},
-			// Project Task Options
 			{
 				displayName: 'Code',
 				name: 'code',
@@ -125,10 +60,37 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 				},
 				displayOptions: {
 					show: {
+						itemtype: ['Project'],
+					},
+				},
+				description: 'Comments for the project',
+			},
+			{
+				displayName: 'Comments',
+				name: 'comment',
+				type: 'string',
+				default: '',
+				typeOptions: {
+					alwaysOpenEditWindow: true,
+				},
+				displayOptions: {
+					show: {
 						itemtype: ['ProjectTask'],
 					},
 				},
-				description: 'Comments',
+
+			},
+			{
+				displayName: 'Group ID',
+				name: 'groups_id',
+				type: 'number',
+				default: 0,
+				displayOptions: {
+					show: {
+						itemtype: ['Project'],
+					},
+				},
+				description: 'ID of the group',
 			},
 			{
 				displayName: 'Group ID',
@@ -149,26 +111,14 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 				default: 0,
 				displayOptions: {
 					show: {
-						itemtype: ['ProjectTask'],
+						itemtype: ['Project'],
 					},
 				},
 				description: 'ID of the manager user',
 			},
 			{
-				displayName: 'Priority',
-				name: 'priority',
-				type: 'number',
-				default: 3,
-				displayOptions: {
-					show: {
-						itemtype: ['ProjectTask'],
-					},
-				},
-				description: 'Priority',
-			},
-			{
-				displayName: 'State ID',
-				name: 'projectstates_id',
+				displayName: 'Manager User ID',
+				name: 'users_id',
 				type: 'number',
 				default: 0,
 				displayOptions: {
@@ -176,31 +126,7 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 						itemtype: ['ProjectTask'],
 					},
 				},
-				description: 'ID of the project state',
-			},
-			{
-				displayName: 'Type ID',
-				name: 'projecttasktypes_id',
-				type: 'number',
-				default: 0,
-				displayOptions: {
-					show: {
-						itemtype: ['ProjectTask'],
-					},
-				},
-				description: 'ID of the project task type',
-			},
-			{
-				displayName: 'As Child of (Task ID)',
-				name: 'projecttasks_id',
-				type: 'number',
-				default: 0,
-				displayOptions: {
-					show: {
-						itemtype: ['ProjectTask'],
-					},
-				},
-				description: 'ID of the parent task',
+				description: 'ID of the manager user',
 			},
 			{
 				displayName: 'Milestone',
@@ -214,7 +140,91 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 				},
 				description: 'Whether this task is a milestone',
 			},
-			// Reminder Options
+			{
+				displayName: 'Number of Items Displayed',
+				name: 'max_items',
+				type: 'number',
+				default: 20,
+				displayOptions: {
+					show: {
+						itemtype: ['RSSFeed'],
+					},
+				},
+				description: 'Maximum number of items to display',
+			},
+			{
+				displayName: 'Priority',
+				name: 'priority',
+				type: 'number',
+				default: 3,
+				displayOptions: {
+					show: {
+						itemtype: ['Project'],
+					},
+				},
+				description: 'Priority of the project',
+			},
+			{
+				displayName: 'Priority',
+				name: 'priority',
+				type: 'number',
+				default: 3,
+				displayOptions: {
+					show: {
+						itemtype: ['ProjectTask'],
+					},
+				},
+
+			},
+			{
+				displayName: 'Query',
+				name: 'query',
+				type: 'string',
+				default: '',
+				placeholder: 'is_deleted=0&as_map=0&browse=0...',
+				displayOptions: {
+					show: {
+						itemtype: ['SavedSearch'],
+					},
+				},
+				description: 'Query string for the search',
+			},
+			{
+				displayName: 'Refresh Rate (Seconds)',
+				name: 'refresh_rate',
+				type: 'number',
+				default: 86400,
+				displayOptions: {
+					show: {
+						itemtype: ['RSSFeed'],
+					},
+				},
+				description: 'Refresh rate in seconds',
+			},
+			{
+				displayName: 'State ID',
+				name: 'projectstates_id',
+				type: 'number',
+				default: 0,
+				displayOptions: {
+					show: {
+						itemtype: ['Project'],
+					},
+				},
+				description: 'ID of the project state',
+			},
+			{
+				displayName: 'State ID',
+				name: 'projectstates_id',
+				type: 'number',
+				default: 0,
+				displayOptions: {
+					show: {
+						itemtype: ['ProjectTask'],
+					},
+				},
+				description: 'ID of the project state',
+			},
 			{
 				displayName: 'Status',
 				name: 'state',
@@ -232,34 +242,8 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 				},
 				description: 'Status of the reminder',
 			},
-			// RSS Feed Options
 			{
-				displayName: 'Refresh Rate (Seconds)',
-				name: 'refresh_rate',
-				type: 'number',
-				default: 86400,
-				displayOptions: {
-					show: {
-						itemtype: ['RSSFeed'],
-					},
-				},
-				description: 'Refresh rate in seconds',
-			},
-			{
-				displayName: 'Number of Items Displayed',
-				name: 'max_items',
-				type: 'number',
-				default: 20,
-				displayOptions: {
-					show: {
-						itemtype: ['RSSFeed'],
-					},
-				},
-				description: 'Maximum number of items to display',
-			},
-			// Saved Search Options
-			{
-				displayName: 'Sub-entities',
+				displayName: 'Sub-Entities',
 				name: 'is_recursive',
 				type: 'boolean',
 				default: false,
@@ -271,19 +255,29 @@ export const toolManagementOptionsDescription: INodeProperties[] = [
 				description: 'Whether to include sub-entities',
 			},
 			{
-				displayName: 'Query',
-				name: 'query',
-				type: 'string',
-				default: '',
-				placeholder: 'is_deleted=0&as_map=0&browse=0...',
+				displayName: 'Type ID',
+				name: 'projecttypes_id',
+				type: 'number',
+				default: 0,
 				displayOptions: {
 					show: {
-						itemtype: ['SavedSearch'],
+						itemtype: ['Project'],
 					},
 				},
-				description: 'Query string for the search',
+				description: 'ID of the project type',
 			},
-	},
+			{
+				displayName: 'Type ID',
+				name: 'projecttasktypes_id',
+				type: 'number',
+				default: 0,
+				displayOptions: {
+					show: {
+						itemtype: ['ProjectTask'],
+					},
+				},
+				description: 'ID of the project task type',
+			},
 		],
 	},
 ];
