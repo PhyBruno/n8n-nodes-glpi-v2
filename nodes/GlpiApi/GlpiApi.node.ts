@@ -218,6 +218,32 @@ export class GlpiApi implements INodeType {
 
 						const assign = this.getNodeParameter('users_id_assign', itemIndex, 0) as number;
 						if (assign) input._users_id_assign = assign;
+						if (assign) input._users_id_assign = assign;
+					} else if (resource === 'Administration Management' && itemtype === 'User') {
+						input.name = this.getNodeParameter('name', itemIndex) as string;
+						
+						const firstname = this.getNodeParameter('firstname', itemIndex, '') as string;
+						if (firstname) input.firstname = firstname;
+
+						input.is_active = this.getNodeParameter('is_active', itemIndex, true) ? 1 : 0;
+						input.entities_id = this.getNodeParameter('entities_id', itemIndex, 0) as number;
+
+						const emailPassword = this.getNodeParameter('email_password', itemIndex, true) as boolean;
+						if (!emailPassword) {
+							input.password = this.getNodeParameter('password', itemIndex, '') as string;
+						}
+
+						// Handle email - usually mapped to _useremails array or separate Call
+						// But for simple User creation, some GLPI versions accept _useremails in payload
+						const email = this.getNodeParameter('email', itemIndex, '') as string;
+						if (email) input._useremails = [email];
+
+						const options = this.getNodeParameter('options', itemIndex, {}) as IDataObject;
+						if (options.is_recursive !== undefined) input.is_recursive = options.is_recursive ? 1 : 0;
+						if (options.profiles_id) input.profiles_id = options.profiles_id;
+						if (options.phone) input.phone = options.phone;
+						if (options.mobile) input.mobile = options.mobile;
+						if (options.realname) input.realname = options.realname;
 					}
 
 					options = {

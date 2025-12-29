@@ -1,6 +1,6 @@
 {
 	"name": "@justbrunasso/n8n-nodes-glpi",
-	"version": "1.0.83",
+	"version": "1.0.84",
 	"description": "GLPI Rest API Node compatible with GLPI 9.x and above.",
 	"license": "MIT",
 	"homepage": "https://github.com/PhyBruno/n8n-nodes-glpi",
