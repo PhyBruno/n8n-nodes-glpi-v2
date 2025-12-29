@@ -12,7 +12,7 @@ export const administrationManagementProfileDescription: INodeProperties[] = [
 			},
 		},
 		default: 0,
-		description: 'ID of the profile to retrieve or update. Leave empty to get all profiles',
+		description: 'ID of the profile to retrieve or update. Leave empty to get all profiles.',
 	},
 	{
 		displayName: 'Payload (JSON)',

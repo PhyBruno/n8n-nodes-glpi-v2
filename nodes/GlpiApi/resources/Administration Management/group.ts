@@ -12,7 +12,7 @@ export const administrationManagementGroupDescription: INodeProperties[] = [
 			},
 		},
 		default: 0,
-		description: 'ID of the group to retrieve or update. Leave empty to get all groups',
+		description: 'ID of the group to retrieve or update. Leave empty to get all groups.',
 	},
 	{
 		displayName: 'Payload (JSON)',

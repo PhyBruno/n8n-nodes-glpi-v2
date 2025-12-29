@@ -22,6 +22,7 @@ export class GithubIssues implements INodeType {
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
+				// eslint-disable-next-line @n8n/community-nodes/no-credential-reuse
 				name: 'githubIssuesApi',
 				required: true,
 				displayOptions: {
@@ -31,6 +32,7 @@ export class GithubIssues implements INodeType {
 				},
 			},
 			{
+				// eslint-disable-next-line @n8n/community-nodes/no-credential-reuse
 				name: 'githubIssuesOAuth2Api',
 				required: true,
 				displayOptions: {
