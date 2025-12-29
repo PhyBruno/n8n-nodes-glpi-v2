@@ -8,7 +8,7 @@ export const administrationManagementGroupDescription: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['Administration Management'],
-				operation: ['getGroup', 'updateGroup'],
+				operation: ['getGroup'],
 			},
 		},
 		default: 0,

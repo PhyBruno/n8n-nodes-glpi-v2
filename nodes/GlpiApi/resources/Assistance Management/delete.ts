@@ -7,16 +7,6 @@ const showOnlyForAssistanceManagementDelete = {
 
 export const assistanceManagementDeleteDescription: INodeProperties[] = [
 	{
-		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
-		name: 'assistanceManagementDeleteNotice',
-		type: 'notice',
-		default: '',
-		displayOptions: {
-			show: showOnlyForAssistanceManagementDelete,
-		},
-		description: 'Delete an assistance management item',
-	},
-	{
 		displayName: 'Item ID',
 		name: 'itemId',
 		type: 'number',
@@ -26,5 +16,15 @@ export const assistanceManagementDeleteDescription: INodeProperties[] = [
 		default: 0,
 		required: true,
 		description: 'ID of the item to delete',
+	},
+	{
+		displayName: 'DELETE /apirest.php/{ItemType}/{ItemID}',
+		name: 'assistanceManagementDeleteNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: {
+			show: showOnlyForAssistanceManagementDelete,
+		},
+		description: 'Delete an assistance management item',
 	},
 ];
