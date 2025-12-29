@@ -18,14 +18,5 @@ export const assistanceManagementCreateDescription: INodeProperties[] = [
 			'Create a new ITIL object (Ticket, Change, Problem, etc.). ' +
 			'The payload must be a valid JSON object.',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		default: '{}',
-		displayOptions: {
-			show: showOnlyForAssistanceManagementCreate,
-		},
-		description: 'JSON payload to create the ITIL object',
-	},
+	// Future UI fields will be added here
 ];

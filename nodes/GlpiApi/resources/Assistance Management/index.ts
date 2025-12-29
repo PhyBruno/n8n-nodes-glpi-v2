@@ -3,6 +3,8 @@ import { assistanceManagementGetDescription } from './get';
 import { assistanceManagementCreateDescription } from './create';
 import { assistanceManagementUpdateDescription } from './update';
 import { assistanceManagementCommentDescription } from './comment';
+import { assistanceManagementCustomApiCallDescription } from './customApiCall';
+import { assistanceManagementOptionsDescription } from './options';
 
 const showOnlyForAssistanceManagement = {
 	resource: ['Assistance Management'],
@@ -19,10 +21,10 @@ export const assistanceManagementDescription: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Get an Assistance Management Item',
-				value: 'get',
-				action: 'Get an assistance management item',
-				description: 'Get the data of a single Assistance Management item',
+				name: 'Comment on an Assistance Management Item',
+				value: 'comment',
+				action: 'Add a comment to an assistance management item',
+				description: 'Add a comment to an assistance management item',
 			},
 			{
 				name: 'Create an Assistance Management Item',
@@ -31,16 +33,22 @@ export const assistanceManagementDescription: INodeProperties[] = [
 				description: 'Create a new Assistance Management item',
 			},
 			{
+				name: 'Custom API Call',
+				value: 'customApiCall',
+				action: 'Make a custom API call',
+				description: 'Make a custom API call with full control',
+			},
+			{
+				name: 'Get an Assistance Management Item',
+				value: 'get',
+				action: 'Get an assistance management item',
+				description: 'Get the data of a single Assistance Management item',
+			},
+			{
 				name: 'Update an Assistance Management Item',
 				value: 'update',
 				action: 'Update an assistance management item',
 				description: 'Update an existing ITIL object',
-			},
-			{
-				name: 'Comment on an Assistance Management Item',
-				value: 'comment',
-				action: 'Add a comment to an assistance management item',
-				description: 'Add a comment to an assistance management item',
 			},
 		],
 		default: 'get',
@@ -67,4 +75,6 @@ export const assistanceManagementDescription: INodeProperties[] = [
 	...assistanceManagementCreateDescription,
 	...assistanceManagementUpdateDescription,
 	...assistanceManagementCommentDescription,
+	...assistanceManagementCustomApiCallDescription,
+	...assistanceManagementOptionsDescription,
 ];

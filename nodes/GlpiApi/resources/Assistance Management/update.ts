@@ -29,14 +29,5 @@ export const assistanceManagementUpdateDescription: INodeProperties[] = [
 			'Update an existing Assistance Management item (Ticket, Change, Problem, etc.). ' +
 			'The payload must be a valid JSON object.',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		default: '{}',
-		displayOptions: {
-			show: showOnlyForAssistanceManagementUpdate,
-		},
-		description: 'JSON payload to update the Assistance Management item',
-	},
+	// Future UI fields will be added here
 ];

@@ -16,14 +16,5 @@ export const administrationManagementCreateDescription: INodeProperties[] = [
 		},
 		description: 'Create a new user or group or profile',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		default: '{}',
-		displayOptions: {
-			show: showOnlyForAdministrationManagementCreate,
-		},
-		description: 'JSON payload to create the user',
-	},
+	// Future UI fields will be added here
 ];

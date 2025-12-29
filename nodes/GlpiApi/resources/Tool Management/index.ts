@@ -2,6 +2,8 @@ import type { INodeProperties } from 'n8n-workflow';
 import { toolManagementCreateDescription } from './create';
 import { toolManagementGetDescription } from './get';
 import { toolManagementUpdateDescription } from './update';
+import { toolManagementCustomApiCallDescription } from './customApiCall';
+import { toolManagementOptionsDescription } from './options';
 
 const showOnlyForToolManagement = {
 	resource: ['Tool Management'],
@@ -22,6 +24,12 @@ export const toolManagementDescription: INodeProperties[] = [
 				value: 'create',
 				action: 'Create an item',
 				description: 'Create a new item',
+			},
+			{
+				name: 'Custom API Call',
+				value: 'customApiCall',
+				action: 'Make a custom API call',
+				description: 'Make a custom API call with full control',
 			},
 			{
 				name: 'Get',
@@ -60,4 +68,6 @@ export const toolManagementDescription: INodeProperties[] = [
 	...toolManagementCreateDescription,
 	...toolManagementGetDescription,
 	...toolManagementUpdateDescription,
+	...toolManagementCustomApiCallDescription,
+	...toolManagementOptionsDescription,
 ];

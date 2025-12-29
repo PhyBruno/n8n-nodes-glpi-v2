@@ -14,17 +14,5 @@ export const setupManagementCreateDescription: INodeProperties[] = [
 		},
 		description: 'Create a new item',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		displayOptions: {
-			show: {
-				resource: ['Setup Management'],
-				operation: ['create'],
-			},
-		},
-		default: '{}',
-		description: 'JSON payload to create the item',
-	},
+	// Future UI fields will be added here
 ];

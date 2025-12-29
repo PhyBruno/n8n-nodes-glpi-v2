@@ -27,15 +27,6 @@ export const administrationManagementUpdateDescription: INodeProperties[] = [
 		required: true,
 		description: 'ID of the user to update',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		default: '{}',
-		displayOptions: {
-			show: showOnlyForAdministrationManagementUpdate,
-		},
-		description: 'JSON payload to update the user',
-	},
+	// Future UI fields will be added here
 ];
 

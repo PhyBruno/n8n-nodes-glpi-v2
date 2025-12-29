@@ -27,15 +27,6 @@ export const AssetManagementUpdateDescription: INodeProperties[] = [
 		required: true,
 		description: 'ID of the asset to update',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		default: '{}',
-		displayOptions: {
-			show: showOnlyForAssetManagementUpdate,
-		},
-		description: 'JSON payload to update the asset',
-	},
+	// Future UI fields will be added here
 ];
 

@@ -14,17 +14,5 @@ export const toolManagementCreateDescription: INodeProperties[] = [
 		},
 		description: 'Create a new item',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		displayOptions: {
-			show: {
-				resource: ['Tool Management'],
-				operation: ['create'],
-			},
-		},
-		default: '{}',
-		description: 'JSON payload to create the item',
-	},
+	// Future UI fields will be added here
 ];

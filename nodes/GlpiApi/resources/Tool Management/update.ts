@@ -28,17 +28,5 @@ export const toolManagementUpdateDescription: INodeProperties[] = [
 		required: true,
 		description: 'ID of the item',
 	},
-	{
-		displayName: 'Payload (JSON)',
-		name: 'payload',
-		type: 'json',
-		displayOptions: {
-			show: {
-				resource: ['Tool Management'],
-				operation: ['update'],
-			},
-		},
-		default: '{}',
-		description: 'JSON payload to update the item',
-	},
+	// Future UI fields will be added here
 ];
