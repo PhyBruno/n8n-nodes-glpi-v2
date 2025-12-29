@@ -5,7 +5,6 @@ import { administrationManagementUpdateDescription } from './update';
 import { administrationManagementGroupDescription } from './group';
 import { administrationManagementProfileDescription } from './profile';
 import { administrationManagementDeleteDescription } from './delete';
-import { administrationManagementOptionsDescription } from './options';
 
 const showOnlyForAdministrationManagement = {
 	resource: ['Administration Management'],
@@ -72,12 +71,12 @@ export const administrationManagementDescription: INodeProperties[] = [
 				action: 'Update a group',
 				description: 'Update an existing group',
 			},
-			{
-				name: 'Update a Profile',
-				value: 'updateProfile',
-				action: 'Update a profile',
-				description: 'Update an existing profile',
-			},
+			// {
+			// 	name: 'Update a Profile',
+			// 	value: 'updateProfile',
+			// 	action: 'Update a profile',
+			// 	description: 'Update an existing profile',
+			// },
 			{
 				name: 'Update a User',
 				value: 'update',
@@ -93,5 +92,4 @@ export const administrationManagementDescription: INodeProperties[] = [
 	...administrationManagementGroupDescription,
 	...administrationManagementProfileDescription,
 	...administrationManagementDeleteDescription,
-	...administrationManagementOptionsDescription,
 ];

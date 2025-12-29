@@ -5,7 +5,6 @@ import { assistanceManagementUpdateDescription } from './update';
 import { assistanceManagementCommentDescription } from './comment';
 import { assistanceManagementSolveDescription } from './solve';
 import { assistanceManagementDeleteDescription } from './delete';
-import { assistanceManagementOptionsDescription } from './options';
 
 const showOnlyForAssistanceManagement = {
 	resource: ['Assistance Management'],
@@ -84,5 +83,4 @@ export const assistanceManagementDescription: INodeProperties[] = [
 	...assistanceManagementDeleteDescription,
 	...assistanceManagementCommentDescription,
 	...assistanceManagementSolveDescription,
-	...assistanceManagementOptionsDescription,
 ];
