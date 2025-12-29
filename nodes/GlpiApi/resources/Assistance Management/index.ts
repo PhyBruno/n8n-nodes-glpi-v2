@@ -3,6 +3,7 @@ import { assistanceManagementGetDescription } from './get';
 import { assistanceManagementCreateDescription } from './create';
 import { assistanceManagementUpdateDescription } from './update';
 import { assistanceManagementCommentDescription } from './comment';
+import { assistanceManagementSolveDescription } from './solve';
 import { assistanceManagementOptionsDescription } from './options';
 
 const showOnlyForAssistanceManagement = {
@@ -38,6 +39,12 @@ export const assistanceManagementDescription: INodeProperties[] = [
 				description: 'Get the data of a single Assistance Management item',
 			},
 			{
+				name: 'Solve an Assistance Management Item',
+				value: 'solve',
+				action: 'Solve an assistance management item',
+				description: 'Solve a Ticket, Change, or Problem',
+			},
+			{
 				name: 'Update an Assistance Management Item',
 				value: 'update',
 				action: 'Update an assistance management item',
@@ -68,5 +75,6 @@ export const assistanceManagementDescription: INodeProperties[] = [
 	...assistanceManagementCreateDescription,
 	...assistanceManagementUpdateDescription,
 	...assistanceManagementCommentDescription,
+	...assistanceManagementSolveDescription,
 	...assistanceManagementOptionsDescription,
 ];

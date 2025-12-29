@@ -227,6 +227,21 @@ export class GlpiApi implements INodeType {
 						},
 						json: true,
 					};
+				} else if (operation === 'solve') {
+					options = {
+						method: 'POST',
+						url: `${baseUrl}/ITILSolution`,
+						headers,
+						body: {
+							input: {
+								items_id: this.getNodeParameter('itemId', itemIndex),
+								itemtype,
+								content: this.getNodeParameter('content', itemIndex),
+								users_id: this.getNodeParameter('users_id', itemIndex),
+							},
+						},
+						json: true,
+					};
 				} else if (operation === 'customApiCall') {
 					const method = this.getNodeParameter('method', itemIndex) as string;
 					const endpoint = this.getNodeParameter('endpoint', itemIndex) as string;
