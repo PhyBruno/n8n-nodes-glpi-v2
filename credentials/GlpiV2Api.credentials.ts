@@ -1,7 +1,7 @@
 import type { ICredentialType, ICredentialTestRequest, INodeProperties, Icon } from 'n8n-workflow';
 
-export class GlpiApi implements ICredentialType {
-	name = 'glpiApi';
+export class GlpiV2Api implements ICredentialType {
+	name = 'glpiV2Api';
 
 	displayName = 'GLPI V2 API';
 

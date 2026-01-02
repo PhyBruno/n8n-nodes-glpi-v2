@@ -67,23 +67,23 @@ async function getOAuthToken(
 	}
 }
 
-export class GlpiApi implements INodeType {
+export class GlpiV2 implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'GLPI Rest API',
-		name: 'glpiApi',
+		displayName: 'GLPI Rest API V2',
+		name: 'glpiV2',
 		icon: 'file:glpi_v2.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'GLPI Rest API Node compatible with GLPI 9.x and above.',
 		defaults: {
-			name: 'GLPI Rest API',
+			name: 'GLPI Rest API V2',
 		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
 		usableAsTool: true,
 		// eslint-disable-next-line @n8n/community-nodes/no-credential-reuse
-		credentials: [{ name: 'glpiApi', required: true }],
+		credentials: [{ name: 'glpiV2Api', required: true }],
 		properties: [
 			{
 				displayName: 'Resource',
@@ -136,7 +136,7 @@ export class GlpiApi implements INodeType {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
 
-		const creds = await this.getCredentials('glpiApi');
+		const creds = await this.getCredentials('glpiV2Api');
 		// Ajusta URL para /api.php se necessário
 		let baseUrl = (creds.host as string).trim();
 		// Remove /apirest.php legacy se existir e garante /api.php

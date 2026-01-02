@@ -1,6 +1,6 @@
 {
 	"name": "@justbrunasso/n8n-nodes-glpi-v2",
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"description": "GLPI Rest API Node compatible with GLPI API V2.",
 	"license": "MIT",
 	"homepage": "https://github.com/PhyBruno/n8n-nodes-glpi-v2",
@@ -34,10 +34,10 @@
 		"n8nNodesApiVersion": 1,
 		"strict": true,
 		"credentials": [
-			"dist/credentials/GlpiApi.credentials.js"
+			"dist/credentials/GlpiV2Api.credentials.js"
 		],
 		"nodes": [
-			"dist/nodes/GlpiApi/GlpiApi.node.js"
+			"dist/nodes/GlpiV2/GlpiV2.node.js"
 		]
 	},
 	"devDependencies": {
