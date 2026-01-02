@@ -3,23 +3,20 @@ import type { ICredentialType, ICredentialTestRequest, INodeProperties, Icon } f
 export class GlpiApi implements ICredentialType {
 	name = 'glpiApi';
 
-	displayName = 'GLPI API';
+	displayName = 'GLPI V2 API';
 
 	icon: Icon = { light: 'file:../icons/glpi.svg', dark: 'file:../icons/glpi.dark.svg' };
 
-	documentationUrl = 'https://atendimento.centrium.com.br/apirest.php';
+	documentationUrl = 'https://atendimento.centrium.com.br/api.php/v2.1/doc.JSON';
 
 	test: ICredentialTestRequest = {
 		request: {
-			url: '={{$credentials.host.replace(/\\/+$/, "") + "/apirest.php"}}/initSession',
-			method: 'GET',
+			url: '={{$credentials.host.replace(/\\/+$/, "") + "/api.php"}}/token',
+			method: 'POST',
 			headers: {
-				'App-Token': '={{$credentials.appToken}}',
+				'Content-Type': 'application/json',
 			},
-			auth: {
-				username: '={{$credentials.username}}',
-				password: '={{$credentials.password}}',
-			},
+			body: '={ "grant_type": "password", "client_id": "{{$credentials.clientId}}", "client_secret": "{{$credentials.clientSecret}}", "username": "{{$credentials.username}}", "password": "{{$credentials.password}}" }',
 		},
 	};
 
@@ -29,18 +26,26 @@ export class GlpiApi implements ICredentialType {
 			name: 'host',
 			type: 'string',
 			default: '',
-			placeholder: 'https://glpi.exemplo.com',
+			placeholder: 'https://glpi.example.com',
 			required: true,
-			description: 'URL base do GLPI (sem /apirest.php - será adicionado automaticamente)',
+			description: 'URL base do GLPI (sem /api.php/v.21 - será adicionado automaticamente)',
 		},
 		{
-			displayName: 'App Token',
-			name: 'appToken',
+			displayName: 'Client ID',
+			name: 'clientId',
+			type: 'string',
+			required: true,
+			default: '',
+			description: 'Client ID gerado no GLPI (Setup > OAuth Clients)',
+		},
+		{
+			displayName: 'Client Secret',
+			name: 'clientSecret',
 			type: 'string',
 			typeOptions: { password: true },
 			required: true,
 			default: '',
-			description: 'App-Token gerado no GLPI',
+			description: 'Client Secret gerado no GLPI',
 		},
 		{
 			displayName: 'Username',
@@ -48,7 +53,7 @@ export class GlpiApi implements ICredentialType {
 			type: 'string',
 			required: true,
 			default: '',
-			description: 'Nome de usuário do GLPI (Administrador)',
+			description: 'Usuário do GLPI a ser autenticado',
 		},
 		{
 			displayName: 'Password',
@@ -57,7 +62,7 @@ export class GlpiApi implements ICredentialType {
 			typeOptions: { password: true },
 			required: true,
 			default: '',
-			description: 'Senha do usuário do GLPI (Administrador)',
+			description: 'Senha do usuário do GLPI',
 		},
 	];
 }

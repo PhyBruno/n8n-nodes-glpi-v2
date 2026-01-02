@@ -16,48 +16,54 @@ import { otherActionsDescription } from './resources/Other Actions';
 import { toolManagementDescription } from './resources/Tool Management';
 import { setupManagementDescription } from './resources/Setup Management';
 
-// 🔐 Função utilitária para inicializar sessão GLPI
-// IMPORTANTE: initSession só aceita GET e retorna session-token
-// O session-token deve ser usado no header 'Session-Token' de todas as requisições posteriores
-async function initSession(
+// 🔐 Função utilitária para obter token OAuth
+// O endpoint /api.php/token retorna o session_token (ou access_token que funciona como tal)
+async function getOAuthToken(
 	this: IExecuteFunctions,
 	baseUrl: string,
-	appToken: string,
+	clientId: string,
+	clientSecret: string,
 	username: string,
 	password: string,
 ): Promise<string> {
 	try {
-		// baseUrl já inclui /apirest.php, então apenas adiciona /initSession
 		const response = await this.helpers.httpRequest({
-			method: 'GET', // initSession só aceita GET
-			url: `${baseUrl}/initSession`,
+			method: 'POST',
+			url: `${baseUrl}/token`,
 			headers: {
-				'App-Token': appToken,
+				'Content-Type': 'application/json',
 			},
-			auth: {
+			body: {
+				grant_type: 'password',
+				client_id: clientId,
+				client_secret: clientSecret,
 				username,
 				password,
 			},
 			json: true,
 		});
 
-		if (!response?.session_token) {
-			throw new ApplicationError('Failed to init GLPI session: session_token not found in response', {
+		// Na V2 o retorno costuma ser { session_token: "..." } ou { access_token: "..." }
+		// Ajustar conforme o retorno real da API V2 do GLPI
+		const token = response?.session_token || response?.access_token;
+
+		if (!token) {
+			throw new ApplicationError('Failed to login to GLPI: session_token/access_token not found in response', {
 				level: 'warning',
 			});
 		}
 
-		return response.session_token;
+		return token;
 	} catch (error) {
 		if (error && typeof error === 'object' && 'response' in error) {
 			const httpError = error as { response: { status: number; statusText: string } };
 			throw new ApplicationError(
-				`Failed to init GLPI session: ${httpError.response.status} ${httpError.response.statusText}. Check your credentials and URL.`,
+				`Failed to login to GLPI: ${httpError.response.status} ${httpError.response.statusText}. Check your credentials and URL.`,
 				{ level: 'error' },
 			);
 		}
 		const errorMessage = error instanceof Error ? error.message : String(error);
-		throw new ApplicationError(`Failed to init GLPI session: ${errorMessage}`, { level: 'error' });
+		throw new ApplicationError(`Failed to login to GLPI: ${errorMessage}`, { level: 'error' });
 	}
 }
 
@@ -131,26 +137,28 @@ export class GlpiApi implements INodeType {
 		const returnData: INodeExecutionData[] = [];
 
 		const creds = await this.getCredentials('glpiApi');
-		// Adiciona /apirest.php automaticamente se não estiver presente
+		// Ajusta URL para /api.php se necessário
 		let baseUrl = (creds.host as string).trim();
-		if (!baseUrl.endsWith('/apirest.php')) {
-			baseUrl = baseUrl.replace(/\/+$/, '') + '/apirest.php';
+		// Remove /apirest.php legacy se existir e garante /api.php
+		baseUrl = baseUrl.replace(/\/apirest\.php\/?$/, '');
+		if (!baseUrl.endsWith('/api.php')) {
+			baseUrl = baseUrl.replace(/\/+$/, '') + '/api.php';
 		}
 
-		// 🔐 Auto init session (uma vez por execução)
-		// O session-token retornado será usado no header de todas as requisições
-		const sessionToken = await initSession.call(
+		// 🔐 Login OAuth2 (uma vez por execução)
+		const sessionToken = await getOAuthToken.call(
 			this,
 			baseUrl,
-			creds.appToken as string,
+			creds.clientId as string,
+			creds.clientSecret as string,
 			creds.username as string,
 			creds.password as string,
 		);
 
-		// Headers com Session-Token para todas as requisições posteriores
+		// Headers para todas as requisições posteriores
 		const headers = {
-			'App-Token': creds.appToken as string,
-			'Session-Token': sessionToken, // Session-token obtido do initSession
+			'Session-Token': sessionToken, // Mantendo Session-Token conforme solicitado
+			// 'Authorization': `Bearer ${sessionToken}`, // Se necessário futuramente
 			'Content-Type': 'application/json',
 		};
 
